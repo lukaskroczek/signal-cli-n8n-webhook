@@ -1,15 +1,14 @@
 # Dockerfile for signal-cli-n8n-webhook bridge
-CMD ["python", "signal_bridge.py"]
-
-ENV POLL_INTERVAL="3"
-ENV WEBHOOK_URL=""
-ENV SIGNAL_CLI_URL=""
-
-RUN pip install requests
-
-COPY signal_bridge.py ./
+FROM python:3.11-slim
 
 WORKDIR /app
 
-FROM python:3.11-slim
+COPY signal_bridge.py ./
 
+RUN pip install requests
+
+ENV SIGNAL_CLI_URL=""
+ENV WEBHOOK_URL=""
+ENV POLL_INTERVAL="3"
+
+CMD ["python", "signal_bridge.py"]
