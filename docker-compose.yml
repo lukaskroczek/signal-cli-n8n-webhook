@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  signal-cli-n8n-webhook:
+    image: lukaskroczek/signal-cli-n8n-webhook:1.0
+    restart: unless-stopped
+    environment:
+      - SIGNAL_CLI_URL=http://signal-cli-rest-api:8080
+      - WEBHOOK_URL=https://your-n8n-instance/webhook/signal
+      - POLL_INTERVAL=3
+    depends_on:
+      - signal-cli-rest-api
+  signal-cli-rest-api:
+    image: bbernhard/signal-cli-rest-api:latest
+    restart: unless-stopped
+    environment:
+      - MODE=normal
+      - SIGNAL_CLI_OPTS=--config /data
+    ports:
+      - "8081:8081"
+    volumes:
+      - signal-cli-data:/data
+volumes:
+  signal-cli-data:
+
