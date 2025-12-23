@@ -6,7 +6,11 @@ services:
     environment:
       - SIGNAL_CLI_URL=http://signal-cli-rest-api:8080
       - WEBHOOK_URL=https://your-n8n-instance/webhook/signal
+      - SIGNAL_NUMBERS=+420704661381
       - POLL_INTERVAL=3
+      - IGNORE_ATTACHMENTS=false
+      - IGNORE_STORIES=true
+      - LOG_LEVEL=INFO
     depends_on:
       - signal-cli-rest-api
   signal-cli-rest-api:
@@ -21,4 +25,3 @@ services:
       - signal-cli-data:/data
 volumes:
   signal-cli-data:
-

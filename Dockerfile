@@ -9,6 +9,10 @@ RUN pip install requests
 
 ENV SIGNAL_CLI_URL=""
 ENV WEBHOOK_URL=""
+ENV SIGNAL_NUMBERS=""
 ENV POLL_INTERVAL="3"
+ENV IGNORE_ATTACHMENTS="false"
+ENV IGNORE_STORIES="true"
+ENV LOG_LEVEL="INFO"
 
 CMD ["python", "signal_bridge.py"]

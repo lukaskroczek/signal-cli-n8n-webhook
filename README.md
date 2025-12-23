@@ -17,7 +17,11 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
 ## Environment Variables
 - `SIGNAL_CLI_URL`: Base URL of your Signal CLI REST API (e.g. `http://localhost:8080`)
 - `WEBHOOK_URL`: URL of your n8n webhook
+- `SIGNAL_NUMBERS`: Comma/space/newline separated list of Signal phone numbers to poll (e.g. `+420704661381,+420700000000`)
 - `POLL_INTERVAL`: Polling interval in seconds (default: 3)
+- `IGNORE_ATTACHMENTS`: "true"/"false" (default: false) -> passed to Signal REST API as `ignore_attachments`
+- `IGNORE_STORIES`: "true"/"false" (default: true) -> passed to Signal REST API as `ignore_stories`
+- `LOG_LEVEL`: Logging level (default: `INFO`). Useful values: `DEBUG`, `INFO`, `WARNING`, `ERROR`
 
 ## Usage
 
@@ -30,7 +34,11 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
    ```bash
    export SIGNAL_CLI_URL="http://localhost:8080"
    export WEBHOOK_URL="https://your-n8n-instance/webhook/signal"
+   export SIGNAL_NUMBERS="+420704661381,+420700000000"
    export POLL_INTERVAL=3
+   export IGNORE_ATTACHMENTS=false
+   export IGNORE_STORIES=true
+   export LOG_LEVEL=INFO
    ```
 3. Run the script:
    ```bash
@@ -44,7 +52,15 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
    ```
 2. Run the container:
    ```bash
-   docker run -e SIGNAL_CLI_URL="http://localhost:8080" -e WEBHOOK_URL="https://your-n8n-instance/webhook/signal" -e POLL_INTERVAL=3 signal-cli-n8n-webhook
+   docker run \
+     -e SIGNAL_CLI_URL="http://localhost:8080" \
+     -e WEBHOOK_URL="https://your-n8n-instance/webhook/signal" \
+     -e SIGNAL_NUMBERS="+420704661381,+420700000000" \
+     -e POLL_INTERVAL=3 \
+     -e IGNORE_ATTACHMENTS=false \
+     -e IGNORE_STORIES=true \
+     -e LOG_LEVEL=DEBUG \
+     signal-cli-n8n-webhook
    ```
 
 ## License
