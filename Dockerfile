@@ -7,6 +7,13 @@ COPY signal_bridge.py ./
 
 RUN pip install requests
 
+# Versioning / metadata (set during build: --build-arg APP_VERSION=1.1)
+ARG APP_VERSION=dev
+LABEL org.opencontainers.image.title="signal-cli-n8n-webhook" \
+    org.opencontainers.image.description="Python bridge that polls signal-cli-rest-api and forwards messages to an n8n webhook" \
+    org.opencontainers.image.version="$APP_VERSION" \
+    org.opencontainers.image.licenses="MIT"
+
 ENV SIGNAL_CLI_URL=""
 ENV WEBHOOK_URL=""
 ENV SIGNAL_NUMBERS=""

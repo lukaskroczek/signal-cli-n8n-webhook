@@ -34,7 +34,7 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
    ```bash
    export SIGNAL_CLI_URL="http://localhost:8080"
    export WEBHOOK_URL="https://your-n8n-instance/webhook/signal"
-   export SIGNAL_NUMBERS="+420704661381,+420700000000"
+   export SIGNAL_NUMBERS="+420700000000,+420700000001"
    export POLL_INTERVAL=3
    export IGNORE_ATTACHMENTS=false
    export IGNORE_STORIES=true
@@ -46,21 +46,24 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
    ```
 
 ### Run with Docker
-1. Build the image:
+1. Build the image (version 1.1):
    ```bash
-   docker build -t signal-cli-n8n-webhook .
+   docker build \
+     --build-arg APP_VERSION=1.1 \
+     -t lukaskroczek/signal-cli-n8n-webhook:1.1 \
+     .
    ```
 2. Run the container:
    ```bash
    docker run \
      -e SIGNAL_CLI_URL="http://localhost:8080" \
      -e WEBHOOK_URL="https://your-n8n-instance/webhook/signal" \
-     -e SIGNAL_NUMBERS="+420704661381,+420700000000" \
+     -e SIGNAL_NUMBERS="+420700000000,+420700000001" \
      -e POLL_INTERVAL=3 \
      -e IGNORE_ATTACHMENTS=false \
      -e IGNORE_STORIES=true \
      -e LOG_LEVEL=DEBUG \
-     signal-cli-n8n-webhook
+     lukaskroczek/signal-cli-n8n-webhook:1.1
    ```
 
 ## License
