@@ -1,7 +1,11 @@
-version: '3.8'
 services:
   signal-cli-n8n-webhook:
-    image: lukaskroczek/signal-cli-n8n-webhook:1.1
+    image: ${IMAGE_REPO}:${APP_VERSION}
+    build:
+      context: .
+      args:
+        APP_VERSION: ${APP_VERSION}
+    platform: linux/arm64
     restart: unless-stopped
     environment:
       - SIGNAL_CLI_URL=http://signal-cli-rest-api:8080
