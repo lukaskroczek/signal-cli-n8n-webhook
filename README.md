@@ -17,7 +17,7 @@ A simple Python bridge that polls messages from a [bbernhard/signal-cli-rest-api
 ## Environment Variables
 - `SIGNAL_CLI_URL`: Base URL of your Signal CLI REST API (e.g. `http://localhost:8080`)
 - `WEBHOOK_URL`: URL of your n8n webhook
-- `SIGNAL_NUMBERS`: Comma/space/newline separated list of Signal phone numbers to poll (e.g. `+420704661381,+420700000000`)
+- `SIGNAL_NUMBERS`: Comma/space/newline separated list of Signal phone numbers to poll (e.g. `+420700000000,+420700000001`)
 - `POLL_INTERVAL`: Polling interval in seconds (default: 3)
 - `IGNORE_ATTACHMENTS`: "true"/"false" (default: false) -> passed to Signal REST API as `ignore_attachments`
 - `IGNORE_STORIES`: "true"/"false" (default: true) -> passed to Signal REST API as `ignore_stories`
